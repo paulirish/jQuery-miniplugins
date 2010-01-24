@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<body>
+
+
+
+<script src="../../jquery.js"></script>
+<script src="../socialkapital/jquery.color.js"></script>
+
+<script>
+
+
+var boxes = 20;
+while (boxes--){
+    $('<div class="box"/>').text(+new Date).appendTo('body');
+}
+
+	//  37:'left', 38:'up', 39:'right',40:'down'
+	$(document).keydown(function(e){
+	    var dir;
+	    if (e.keyCode == 38) dir = 'prevAll';
+	    if (e.keyCode == 40) dir = 'nextAll';
+	    
+	    if (!dir) return;
+	    
+	    var elem = $('.active:last').add('.box:first').slice(0,1).removeClass('active')[dir]('.box'); 
+
+    	var pos = elem.offset().top + elem.height();
+	    jQuery("html,body").stop().animate({scrollTop: pos},function(){
+	        $(this).addClass('active');
+	    });
+
+	    
+	});
+
+
+</script>
+
+
+<style type="text/css">
+ .box { width: 100px; height: 100px; background-color: #bada55; border: 1px solid black; margin: 30px; }
+ .active { background: #facade  }
+</style>
+
+
+</body>
+</html>

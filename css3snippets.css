@@ -1,0 +1,43 @@
+
+/* commonly used css3 snippets. with cross-browser implementation */
+
+
+
+/* rounded corners */
+/* not in ie8 */
+.rounded {
+  border-radius: 10px;  
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+/* text shadow 
+   ff 3.5+, ie5.5+, saf2+ 
+   medium grey shadow with bottom-right orientation 
+   more examples/possibilities here: http://leaverou.me/demos/text-shadow.html
+   */
+.textshadow {
+ text-shadow: #666 2px 2px 2px;   filter:progid:DXImageTransform.Microsoft.Shadow(color=#666666,direction=135,strength=4); zoom:1;
+}
+ 
+/* box shadow */
+/* ff3.5+,Saf3+, IE6+. */
+.shadow {
+  -moz-box-shadow:  0 10px 14px rgba(100,100,100,.7);   
+  -webkit-box-shadow: 0 10px 14px rgba(100,100,100,.7);
+  background: #000\9; filter:progid:DXImageTransform.Microsoft.Blur(pixelradius=2,makeshadow='true', shadowopacity=0.5);  
+}
+
+
+
+/* rotation */
+/* http://snook.ca/archives/html_and_css/css-text-rotation & http://msdn.microsoft.com/en-us/library/ms532972%28VS.85%29.aspx */
+.rotate90 {
+	-webkit-transform: rotate(-90deg); 
+	-moz-transform: rotate(-90deg);
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+
+
+background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e4e4e4)),  -moz-gradient(linear, left top, left bottom, from(#fff), to(#e4e4e4)), white;}
