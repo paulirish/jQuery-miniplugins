@@ -1,4 +1,34 @@
 
+
+// doOffDom plugin
+// basically .detach(), doStuff(), reattach();
+
+// usage:
+//   $(elem).doOffDom(function(){
+      // something costly
+      // `this` is the jQuery object that you called it on.
+//   });
+
+jQuery.fn.doOffDom = function(hollaback){
+  var ref = this.next()[0] || null,
+      par = this[0].parentNode;
+       
+  this.detach();
+  hollaback.apply(this, arguments);
+  par.insertBefore(this[0], ref);
+  return this;
+};
+
+
+
+// focus selector filter by paul irish
+// works in ie6+, ff3+, chrome2+, saf4+, opera9+ 
+// only works on A, INPUT, SELECT, TEXTAREA
+// also, querySelectorAll has native support for :focus
+$.expr[':'].focus = function(a){  return (a == document.activeElement); }
+
+
+
 // usage: log('inside coolFunc',this,arguments);
 // http://paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
 window.log = function(){
@@ -84,12 +114,6 @@ $.fn.splitAnd = function(num,func){
 // not neccessary in 1.3.2+
 $.expr[ ":" ].reallyvisible = function(a){ return !(jQuery(a).is(':hidden') || jQuery(a).parents(':hidden').length); };
 
-// focus selector filter by paul irish
-// works in ie6+, ff3+, chrome2+, saf4+, opera9+ 
-// only works on A, INPUT, SELECT, TEXTAREA
-// also, querySelectorAll has native support for :focus
-$.expr[':'].focus = function(a){  return (a == document.activeElement); }
-
 
 // aria custom selector
 // usage:
@@ -158,14 +182,6 @@ $.fn.getFlashObj = function(){   // does NOT return a jQuery object. cannot take
 };
 
 
-
-
-// usually you can just use position() instead.
-$.fn.offsetFrom = function(parentElem){
-  var po = $(parentElem).offset();
-  var to = $(this).offset();
-  return { left: to.left - po.left, top: to.top - po.top};
-}
 
 
 
