@@ -14,60 +14,6 @@ window.log = function(){
 
 
 
-// thanks to nlogax
-jQuery.fn.wait = function(time, type) {
-        time = time || 1000;
-        type = type || "fx";
-        return this.queue(type, function() {
-            var self = this;
-            setTimeout(function() {
-                $(self).dequeue();
-            }, time);
-        });
-};
-
-// http://james.padolsey.com/javascript/jquery-delay-plugin/
-$.fn.delay = function(time, callback){
-    // Empty function:
-    jQuery.fx.step.delay = function(){};
-    // Return meaningless animation, (will be added to queue)
-    return this.animate({delay:1}, time, callback);
-}
-
-
-
-
-
-
-// nextAllUntil() by paul irish
-// like nextAll() but quits when it hits a given selector
-// e.g. $('dd:first').nextAllUntil('dd','dt'); // give me all dd's until a dt
-// e.g. $('p#top').nextAllUntil('*','ul.more'); // give me all following siblings until a ul.more
-// demo: http://jsbin.com/egije
-$.fn.nextAllUntil = function(next,until){ 
- 
-  return this.nextAll().filter(function(){
-    if (arguments.callee.isFound) return false;
-    
-    if ($(this).is(until)){ 
-      arguments.callee.isFound = true;
-      return false;
-    }
-    return true;
-  }).filter(next);
-};
-
-// did this one much later. merge these together.
-$.fn.nextAllUntil = function(sel){
-    return this.nextAll().filter(function f(){ 
-        if ($(this).is(sel)){ 
-            f.alive = false; return false; 
-        } 
-        return f.alive === false ? false : true;  
-    });
-}
-
-
 
 
 
