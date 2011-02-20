@@ -38,25 +38,6 @@ $.fn.serializeObj = function(){
 
 
 
-
-
-// hinting with default values for text input items. 
-// usage: $(':text[value!=""]').inputHint();
-// author: paul irish
-$.fn.inputHint = function(){
-  return $(this)
-    .each(function(){ 
-      $(this).data('default', $(this).val());
-    })
-    .focus(function(){
-      ($(this).val()===$(this).data('default')) && $(this).val('');
-    })
-    .blur(function(){
-      ($(this).val()==='') && $(this).val($(this).data('default'));
-    });
-}
-
-
 // good for IE6 and the fact that it doesnt have the :hover pseudo-selector
 // usage: $('.nav li').hoverClass()  // will use 'hover'
 // usage: $('.nav li').hoverClass('hovered')
